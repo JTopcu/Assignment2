@@ -113,9 +113,17 @@ public class Room
 	
 	public String toString()
 	{
-		String details = roomId + ":" + description + ":" + String.valueOf(status) + ":" + String.valueOf(dailyRate)
+		if (status != 'A')
+		{
+			String details = roomId + ":" + description + ":" + String.valueOf(status) + ":" + String.valueOf(dailyRate)
 						+ ":" + bookingStartDate.toString() + ":" + bookingEndDate.toString();
+			return details;
+		}
+		else
+		{
+			String details = roomId + ":" + description + ":" + String.valueOf(status) + ":" + String.valueOf(dailyRate);
+			return details;
+		}
 		
-		return details;
 	}
 }

@@ -49,7 +49,11 @@ public class Menu
 		switch(response)
 		{
 			case 0:
-				System.out.println("Thank you for using our booking system");
+				System.out.println("Thank you for using our booking system.  Here is your receipt:");
+				for(int i = 0; i < rooms.length; i++)
+				{
+					System.out.println(rooms[i].toString());
+				}
 				break;
 				
 			case 1:
@@ -87,6 +91,7 @@ public class Menu
 					System.out.println("These are the rooms that fall in your price range.\n");
 				}
 				break;
+				
 			case 3:
 				System.out.println("To book a room we will need the last digit of the room ID, "
 									+ "your customer ID and the amount of nights of your stay.");
@@ -104,6 +109,7 @@ public class Menu
 				
 				System.out.println("You have successfully booked this room.");
 				break;
+				
 			case 4:
 				System.out.print("Which room are you checking out of?: ");
 				roomId = scanner.nextInt();
@@ -118,6 +124,8 @@ public class Menu
 				{
 					System.out.println("Sorry, that is an invalid room or the room is currently not booked.\n");
 				}
+			case 5:
+				
 		}
 	}
 }
