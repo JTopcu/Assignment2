@@ -4,10 +4,10 @@ import utilities.DateTime;
 
 public class Room
 {
-	private String roomId, description, hirerId;
-	private DateTime bookingStartDate, bookingEndDate;
-	private char status;
-	private double dailyRate;
+	protected String roomId, description, hirerId;
+	protected DateTime bookingStartDate, bookingEndDate;
+	protected char status;
+	protected double dailyRate;
 	
 	
 	public Room(String roomId, String description, double dailyRate)
