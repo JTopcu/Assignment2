@@ -29,6 +29,11 @@ public class Room
 		return status;
 	}
 	
+	public String getId()
+	{
+		return roomId;
+	}
+	
 	public boolean bookRoom(String customerId, int nightsRequired)
 	{
 		if (this.status == 'A')
