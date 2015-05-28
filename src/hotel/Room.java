@@ -5,7 +5,8 @@ import utilities.DateTime;
 public class Room
 {
 	protected String roomId, description, hirerId;
-	protected DateTime bookingStartDate, bookingEndDate;
+	protected DateTime bookingStartDate; 
+	protected DateTime bookingEndDate;
 	protected char status;
 	protected double dailyRate;
 	
@@ -18,6 +19,16 @@ public class Room
 		status = 'A';
 	}
 	
+
+	public String getHirerId()
+	{
+		return hirerId;
+	}
+	
+	public void setHirerId(String id)
+	{
+		this.hirerId = id;
+	}
 	
 	public double getDailyRate()
 	{
@@ -32,6 +43,17 @@ public class Room
 	public String getId()
 	{
 		return roomId;
+	}
+	
+	public void setStatus(char status)
+	{
+		this.status = status;
+	}
+	
+	public void setDate(DateTime sDate, DateTime eDate)
+	{
+		this.bookingStartDate = sDate;
+		this.bookingEndDate = eDate;
 	}
 	
 	public boolean bookRoom(String customerId, int nightsRequired)
@@ -61,6 +83,7 @@ public class Room
 		int daysStayed = DateTime.diffDays(bookingEndDate, bookingStartDate);
 		double totalCost = (daysStayed - 1) * dailyRate;
 		status = 'U';
+		hirerId = null;
 		return totalCost;
 	}
 	
@@ -118,17 +141,8 @@ public class Room
 	
 	public String toString()
 	{
-		if (status != 'A')
-		{
-			String details = roomId + ":" + description + ":" + String.valueOf(status) + ":" + String.valueOf(dailyRate)
-						+ ":" + bookingStartDate.toString() + ":" + bookingEndDate.toString();
-			return details;
-		}
-		else
-		{
-			String details = roomId + ":" + description + ":" + String.valueOf(status) + ":" + String.valueOf(dailyRate);
-			return details;
-		}
-		
+		String details = roomId + ":" + description + ":" + String.valueOf(status) + ":" + String.valueOf(dailyRate)
+					+ ":" + bookingStartDate.toString() + ":" + bookingEndDate.toString();
+		return details;
 	}
 }

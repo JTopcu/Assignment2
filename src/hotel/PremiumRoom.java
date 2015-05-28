@@ -17,6 +17,15 @@ public class PremiumRoom extends Room
 		status = 'A';
 	}
 	
+	public double getDiscount()
+	{
+		return nextBookingDiscountVoucher;
+	}
+	
+	public void setDiscount(double discount)
+	{
+		this.nextBookingDiscountVoucher = discount;
+	}
 	
 	public boolean bookRoom(String customerId, int nightsRequired, int voucher)
 	{
@@ -54,6 +63,13 @@ public class PremiumRoom extends Room
 		}
 		double costWithVoucher = Math.min(costNoVoucher - nextBookingDiscountVoucher, daysStayed * discountRate);
 		
+		if (costWithVoucher < 0)
+		{
+			costWithVoucher = 0.00;
+		}
+		
+		hirerId = null;
+		status = 'U';
 		return costWithVoucher;
 	}
 	
@@ -71,19 +87,9 @@ public class PremiumRoom extends Room
 	
 	public String toString()
 	{
-		if (status != 'A')
-		{
-			String details = roomId + ":" + description + ":" + String.valueOf(status) + ":" + String.valueOf(dailyRate)
-						+ ":" + bookingStartDate.toString() + ":" + bookingEndDate.toString() + ":" + String.valueOf(freeNights) + ":" +
-						String.valueOf(discountRate) + ":" + String.valueOf(nextBookingDiscountVoucher);
-			return details;
-		}
-		else
-		{
-			String details = roomId + ":" + description + ":" + String.valueOf(status) + ":" + String.valueOf(dailyRate) + ":" + 
-					String.valueOf(freeNights) + ":" + String.valueOf(discountRate) + ":" + String.valueOf(nextBookingDiscountVoucher);
-			return details;
-		}
-		
+		String details = roomId + ":" + description + ":" + String.valueOf(status) + ":" + String.valueOf(dailyRate)
+					+ ":" + bookingStartDate.toString() + ":" + bookingEndDate.toString() + ":" + String.valueOf(freeNights) + ":" +
+					String.valueOf(discountRate);
+		return details;
 	}
 }

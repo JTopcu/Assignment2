@@ -1,6 +1,7 @@
 package utilities;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 public class DateTime
 {
@@ -10,6 +11,11 @@ public class DateTime
 	public DateTime()
 	{
 		time = System.currentTimeMillis() + advance;
+	}
+	
+	public DateTime(int day, int month, int year)
+	{
+		setDate(day, month, year);
 	}
 	
 	public long getTime()
@@ -48,4 +54,14 @@ public class DateTime
 		return (int) (1 + (hirePeriod) / (convertToDays));
 	}
 
+	private void setDate(int day, int month, int year)
+	{
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(year, month - 1, day, 0, 0);   
+
+		java.util.Date date = calendar.getTime();
+
+		time = date.getTime();
+	}
 }
